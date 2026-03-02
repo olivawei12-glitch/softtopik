@@ -91,3 +91,17 @@ footer {
     background-color: #f2e8df;
     font-size: 14px;
 }
+
+.top-nav {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.top-nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #6b4e3a; /* 温柔奶油色系深色 */
+    font-weight: bold;
+}
+.top-nav a:hover {
+    text-decoration: underline;
+}
