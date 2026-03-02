@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-    <section>
-    <h2>每日一句</h2>
-    <p id="korean-sentence"></p>
-    <p id="chinese-translation"></p>
-</section>
-    
 <body>
 
 <header class="hero">
@@ -25,22 +19,29 @@
 
     <h1>SoftTOPIK</h1>
     <p class="subtitle">温和而系统地掌握 TOPIK 考试</p>
-</header>
-    <nav class="top-nav">
-        <a href="index.html">首页</a>
-        <a href="topik.html">TOPIK</a>
-        <a href="grammar.html">语法</a>
-    </nav>
-    <h1>SoftTOPIK</h1>
-    <p class="subtitle">温和而系统地掌握 TOPIK 考试</p>
-</header>
-    <h1>SoftTOPIK</h1>
-    <p class="subtitle">温和而系统地掌握 TOPIK 考试</p>
+
     <div class="buttons">
         <a href="topik.html" class="btn">进入 TOPIK 专区</a>
         <a href="grammar.html" class="btn secondary">学习语法基础</a>
     </div>
 </header>
+
+<!-- 每日一句 -->
+<section>
+    <h2>每日一句</h2>
+    <p id="korean-sentence"></p>
+    <p id="chinese-translation"></p>
+</section>
+
+<!-- 今日小测 -->
+<section>
+    <h2>今日小测</h2>
+    <p id="quiz-question"></p>
+    <button onclick="showAnswer()">显示答案</button>
+    <p id="quiz-answer" style="display:none;"></p>
+    <br>
+    <button onclick="nextQuiz()">下一题</button>
+</section>
 
 <section class="why">
     <h2>为什么选择 SoftTOPIK？</h2>
@@ -69,7 +70,8 @@
     <p>© 2026 SoftTOPIK. 专注中文学习者的 TOPIK 系统站。</p>
 </footer>
 
-    <script>
+<script>
+// ===== 每日一句 =====
 const sentences = [
     { ko: "오늘은 날씨가 좋아요.", zh: "今天天气很好。" },
     { ko: "저는 한국어를 공부해요.", zh: "我在学习韩语。" },
@@ -81,7 +83,35 @@ const sentences = [
 const randomIndex = Math.floor(Math.random() * sentences.length);
 document.getElementById("korean-sentence").innerText = sentences[randomIndex].ko;
 document.getElementById("chinese-translation").innerText = sentences[randomIndex].zh;
+
+
+// ===== 今日小测 =====
+const quizzes = [
+    { q: "-지만 的意思是什么？", a: "表示“虽然...但是...”" },
+    { q: "-기 때문에 表示什么？", a: "表示“因为...”" },
+    { q: "-려고 하다 的意思？", a: "表示“打算做某事”" },
+    { q: "-더라도 表示什么？", a: "表示“即使...”" }
+];
+
+let currentQuiz = 0;
+
+function loadQuiz() {
+    document.getElementById("quiz-question").innerText = quizzes[currentQuiz].q;
+    document.getElementById("quiz-answer").innerText = quizzes[currentQuiz].a;
+    document.getElementById("quiz-answer").style.display = "none";
+}
+
+function showAnswer() {
+    document.getElementById("quiz-answer").style.display = "block";
+}
+
+function nextQuiz() {
+    currentQuiz = (currentQuiz + 1) % quizzes.length;
+    loadQuiz();
+}
+
+loadQuiz();
 </script>
-    
+
 </body>
 </html>
