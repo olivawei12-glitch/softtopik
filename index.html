@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+    <section>
+    <h2>每日一句</h2>
+    <p id="korean-sentence"></p>
+    <p id="chinese-translation"></p>
+</section>
+    
 <body>
 
 <header class="hero">
@@ -63,5 +69,19 @@
     <p>© 2026 SoftTOPIK. 专注中文学习者的 TOPIK 系统站。</p>
 </footer>
 
+    <script>
+const sentences = [
+    { ko: "오늘은 날씨가 좋아요.", zh: "今天天气很好。" },
+    { ko: "저는 한국어를 공부해요.", zh: "我在学习韩语。" },
+    { ko: "천천히 가도 괜찮아요.", zh: "慢慢来也没关系。" },
+    { ko: "포기하지 마세요.", zh: "不要放弃。" },
+    { ko: "노력은 배신하지 않아요.", zh: "努力不会背叛你。" }
+];
+
+const randomIndex = Math.floor(Math.random() * sentences.length);
+document.getElementById("korean-sentence").innerText = sentences[randomIndex].ko;
+document.getElementById("chinese-translation").innerText = sentences[randomIndex].zh;
+</script>
+    
 </body>
 </html>
